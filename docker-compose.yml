@@ -1,12 +1,14 @@
 version: '3'
 
 services:
+# make dir for postgres first /home/ec2-user/postgres
   db:
     image: postgres
     environment:
       POSTGRES_DB: concourse
       POSTGRES_USER: concourse_user
       POSTGRES_PASSWORD: concourse_pass
+#    volumes: ["/home/ec2-user/postgres:/var/lib/postgresql/data"]
     logging:
       driver: "json-file"
       options:
@@ -26,8 +28,8 @@ services:
       CONCOURSE_POSTGRES_USER: concourse_user
       CONCOURSE_POSTGRES_PASSWORD: concourse_pass
       CONCOURSE_POSTGRES_DATABASE: concourse
-      CONCOURSE_ADD_LOCAL_USER: test:test
-      CONCOURSE_MAIN_TEAM_LOCAL_USER: test
+      CONCOURSE_ADD_LOCAL_USER: someadmin:replacethispassword
+      CONCOURSE_MAIN_TEAM_LOCAL_USER: someadmin
     logging:
       driver: "json-file"
       options:
